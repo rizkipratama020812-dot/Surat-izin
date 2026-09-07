@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surat Izin Sekolah — Buat Surat Izin dengan Mudah</title>
+  <meta name="description" content="Buat surat izin sekolah secara cepat, preview surat, download PDF atau gambar, dan bagikan link surat.">
+  <meta name="theme-color" content="#2563eb">
+
+  <!-- Open Graph / Meta Sosial -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Surat Izin Sekolah — Buat Surat Izin dengan Mudah">
+  <meta property="og:description" content="Buat surat izin sekolah secara cepat, preview surat, download PDF atau gambar, dan bagikan link surat.">
+
+  <!-- Font Family -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Tinos:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- External Export Libraries (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Ny/J295rBWCP+UgiXJMvAUp3FB6ACxpgajF/conlQJxusIAGQC2ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsqxPq68JSGDXAn81i8wIR5b49Fj4f0gC_32wN7a+iS9I4S9B56pL8a0FkXm0aZ7j6pA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-theme">
+
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="/" class="brand" id="brand-logo">
+        <svg class="icon icon-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        <span class="brand-name">Surat Izin Sekolah</span>
+      </a>
+
+      <nav class="nav-menu">
+        <button id="btn-nav-home" class="nav-link">Beranda</button>
+        <button id="btn-nav-create" class="btn btn-primary btn-sm">Buat Surat</button>
+        <button id="btn-nav-about" class="nav-link">Tentang</button>
+        <button id="btn-theme-toggle" class="btn-theme" title="Ubah Tema" aria-label="Ubah Tema">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main id="main-content">
+
+    <!-- 1. HALAMAN BERANDA -->
+    <section id="page-home" class="page-section active">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <span class="badge">Otomatis & Cepat</span>
+          <h1 class="hero-title">Buat Surat Izin Sekolah dengan Mudah</h1>
+          <p class="hero-subtitle">Isi data, buat surat untuk anak atau diri sendiri, lalu download atau bagikan surat izin dalam beberapa langkah.</p>
+          <div class="hero-actions">
+            <button id="btn-hero-create" class="btn btn-primary btn-lg">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              Buat Surat Izin
+            </button>
+            <a href="#cara-kerja" class="btn btn-outline btn-lg">Cara Kerja</a>
+          </div>
+        </div>
+
+        <div class="hero-illustration">
+          <div class="paper-preview-mini">
+            <div class="mini-header"></div>
+            <div class="mini-line w-80"></div>
+            <div class="mini-line w-60"></div>
+            <div class="mini-block"></div>
+            <div class="mini-line w-100"></div>
+            <div class="mini-line w-90"></div>
+            <div class="mini-line w-75"></div>
+            <div class="mini-footer"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Fitur -->
+      <section class="features-section">
+        <div class="container">
+          <h2 class="section-title">Fitur Utama</h2>
+          <div class="features-grid">
+            <div class="card feature-card">
+              <div class="feature-icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+              </div>
+              <h3>Mudah & Fleksibel</h3>
+              <p>Pilih pembuat surat untuk anak atau diri sendiri dengan data wali kelas yang jelas.</p>
+            </div>
+
+            <div class="card feature-card">
+              <div class="feature-icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </div>
+              <h3>Preview Surat</h3>
+              <p>Periksa tampilan surat secara real-time sebelum diunduh atau dikirim.</p>
+            </div>
+
+            <div class="card feature-card">
+              <div class="feature-icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="12" y2="18"></line><line x1="15" y1="15" x2="12" y2="18"></line></svg>
+              </div>
+              <h3>Download PDF</h3>
+              <p>Simpan surat langsung dalam format dokumen PDF standar A4.</p>
+            </div>
+
+            <div class="card feature-card">
+              <div class="feature-icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              </div>
+              <h3>Download Gambar</h3>
+              <p>Simpan surat sebagai gambar berkualitas tinggi (PNG/JPG) untuk dikirim via WA.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Cara Kerja -->
+      <section id="cara-kerja" class="how-it-works-section">
+        <div class="container">
+          <h2 class="section-title">Cara Kerja</h2>
+          <div class="steps-grid">
+            <div class="step-card">
+              <span class="step-number">1</span>
+              <h4>Pilih Pembuat</h4>
+              <p>Pilih apakah surat dibuat oleh orang tua untuk anak, atau oleh siswa sendiri.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">2</span>
+              <h4>Isi Formulir</h4>
+              <p>Lengkapi data siswa, nama wali kelas, sekolah, dan masa izin.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">3</span>
+              <h4>Generate Surat</h4>
+              <p>Sistem merakit surat otomatis dengan format resmi dan tata bahasa pas.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">4</span>
+              <h4>Download & Bagikan</h4>
+              <p>Unduh PDF/Gambar atau bagikan link unik berbasis nama pengguna.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- 2. HALAMAN FORMULIR -->
+    <section id="page-form" class="page-section">
+      <div class="container form-container">
+        <div class="card form-card">
+          <div class="form-header">
+            <h2>Buat Surat Izin</h2>
+            <p>Lengkapi informasi di bawah ini dengan benar.</p>
+          </div>
+
+          <form id="letter-form" novalidate>
+            
+            <!-- Group Tipe Pembuat Surat -->
+            <fieldset class="form-group-box">
+              <legend>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                Pembuat Surat <span class="required">*</span>
+              </legend>
+              <div class="radio-selector-group">
+                <label class="radio-card active" id="label-author-parent">
+                  <input type="radio" name="authorType" value="orangtua" checked>
+                  <div class="radio-content">
+                    <strong>Orang Tua / Wali</strong>
+                    <span>Dibuat oleh orang tua/wali untuk mengizinkan anak</span>
+                  </div>
+                </label>
+                <label class="radio-card" id="label-author-student">
+                  <input type="radio" name="authorType" value="siswa">
+                  <div class="radio-content">
+                    <strong>Siswa Sendiri</strong>
+                    <span>Dibuat oleh siswa untuk mengajukan izin sendiri</span>
+                  </div>
+                </label>
+              </div>
+            </fieldset>
+
+            <!-- Group Data Siswa -->
+            <fieldset class="form-group-box">
+              <legend>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                Data Siswa
+              </legend>
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="studentName">Nama Siswa <span class="required">*</span></label>
+                  <input type="text" id="studentName" placeholder="Contoh: Rizki Pratama" required>
+                  <span class="error-text" id="err-studentName">Nama siswa wajib diisi</span>
+                </div>
+                <div class="form-field">
+                  <label for="studentClass">Kelas <span class="required">*</span></label>
+                  <input type="text" id="studentClass" placeholder="Contoh: IX-B / 12 IPA 1" required>
+                  <span class="error-text" id="err-studentClass">Kelas wajib diisi</span>
+                </div>
+                <div class="form-field">
+                  <label for="homeroomTeacher">Nama Wali Kelas <span class="required">*</span></label>
+                  <input type="text" id="homeroomTeacher" placeholder="Contoh: Ibu Ani, S.Pd." required>
+                  <span class="error-text" id="err-homeroomTeacher">Nama wali kelas wajib diisi</span>
+                </div>
+                <div class="form-field">
+                  <label for="schoolName">Nama Sekolah <span class="required">*</span></label>
+                  <input type="text" id="schoolName" placeholder="Contoh: SMP Negeri 1 Jakarta" required>
+                  <span class="error-text" id="err-schoolName">Nama sekolah wajib diisi</span>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Group Data Surat -->
+            <fieldset class="form-group-box">
+              <legend>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                Data Surat
+              </legend>
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="cityName">Kota Tempat Buat Surat <span class="required">*</span></label>
+                  <input type="text" id="cityName" placeholder="Contoh: Jakarta" required>
+                  <span class="error-text" id="err-cityName">Kota wajib diisi</span>
+                </div>
+                <div class="form-field">
+                  <label for="letterDate">Tanggal Surat <span class="required">*</span></label>
+                  <input type="date" id="letterDate" required>
+                  <span class="error-text" id="err-letterDate">Tanggal surat wajib diisi</span>
+                </div>
+                <div class="form-field">
+                  <label for="startDate">Mulai Izin Tanggal <span class="required">*</span></label>
+                  <input type="date" id="startDate" required>
+                  <span class="error-text" id="err-startDate">Tanggal mulai izin wajib diisi</span>
+                </div>
+                <div class="form-field">
+                  <label for="endDate">Selesai Izin Tanggal <span class="required">*</span></label>
+                  <input type="date" id="endDate" required>
+                  <span class="error-text" id="err-endDate">Tanggal selesai izin wajib diisi</span>
+                </div>
+                <div class="form-field full-width">
+                  <label for="reasonType">Alasan Tidak Masuk <span class="required">*</span></label>
+                  <select id="reasonType" required>
+                    <option value="">-- Pilih Alasan --</option>
+                    <option value="Sakit">Sakit</option>
+                    <option value="Acara keluarga">Acara keluarga</option>
+                    <option value="Keperluan keluarga">Keperluan keluarga</option>
+                    <option value="Keperluan penting">Keperluan penting</option>
+                    <option value="Lainnya">Lainnya...</option>
+                  </select>
+                  <span class="error-text" id="err-reasonType">Alasan wajib dipilih</span>
+                </div>
+                <div class="form-field full-width hidden" id="custom-reason-container">
+                  <label for="customReason">Detail Alasan <span class="required">*</span></label>
+                  <input type="text" id="customReason" placeholder="Tuliskan alasan lengkap tidak masuk sekolah...">
+                  <span class="error-text" id="err-customReason">Detail alasan wajib diisi</span>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Group Data Orang Tua (Dynamic: Hidden when "Siswa Sendiri") -->
+            <fieldset class="form-group-box" id="parent-info-group">
+              <legend>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                Data Orang Tua / Wali
+              </legend>
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="parentName">Nama Orang Tua / Wali <span class="required">*</span></label>
+                  <input type="text" id="parentName" placeholder="Contoh: Budi Santoso">
+                  <span class="error-text" id="err-parentName">Nama orang tua/wali wajib diisi</span>
+                </div>
+                <div class="form-field">
+                  <label for="parentRelation">Hubungan dengan Siswa <span class="required">*</span></label>
+                  <select id="parentRelation">
+                    <option value="Ayah">Ayah</option>
+                    <option value="Ibu">Ibu</option>
+                    <option value="Wali">Wali</option>
+                  </select>
+                  <span class="error-text" id="err-parentRelation">Hubungan wajib dipilih</span>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Group Data URL Slug -->
+            <fieldset class="form-group-box">
+              <legend>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                URL & Tautan Surat
+              </legend>
+              <div class="form-grid">
+                <div class="form-field full-width">
+                  <label for="userSlug">Nama Pengguna / Slug URL <span class="required">*</span></label>
+                  <input type="text" id="userSlug" placeholder="rizki-pratama" required>
+                  <small class="help-text">Dihasilkan otomatis dari nama siswa. Anda dapat mengubahnya jika perlu.</small>
+                  <div class="url-preview-box">
+                    <span>URL Anda: </span>
+                    <strong id="slug-preview-text">https://domain.com/rizki-pratama</strong>
+                  </div>
+                  <span class="error-text" id="err-userSlug">Slug URL wajib diisi</span>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary btn-block btn-lg">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="12" y2="18"></line><line x1="15" y1="15" x2="12" y2="18"></line></svg>
+                Buat Surat Sekarang
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. HALAMAN PREVIEW & VIEW SURAT -->
+    <section id="page-preview" class="page-section">
+      <div class="container preview-container">
+        
+        <!-- Action Toolbar Top -->
+        <div class="preview-toolbar">
+          <button id="btn-edit-letter" class="btn btn-outline">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            Edit Data
+          </button>
+          <div class="toolbar-download-group">
+            <button id="btn-download-pdf" class="btn btn-secondary">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              PDF
+            </button>
+            <button id="btn-download-png" class="btn btn-secondary">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              PNG
+            </button>
+            <button id="btn-download-jpg" class="btn btn-secondary">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              JPG
+            </button>
+          </div>
+          <button id="btn-share-link" class="btn btn-outline">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+            Bagikan
+          </button>
+          <button id="btn-copy-link" class="btn btn-outline">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Salin Link
+          </button>
+          <button id="btn-new-letter" class="btn btn-primary">
+            Buat Baru
+          </button>
+        </div>
+
+        <!-- Paper Container (Standard Formal Indonesian Letter Format) -->
+        <div class="paper-wrapper">
+          <div id="letter-paper" class="letter-paper">
+            <div class="letter-title">
+              <h2>SURAT IZIN TIDAK MASUK SEKOLAH</h2>
+              <div class="letter-title-line"></div>
+            </div>
+
+            <div class="letter-recipient">
+              <p>Kepada Yth.<br>
+              <strong>Bapak/Ibu <span id="view-recipient-teacher">[Wali Kelas]</span></strong><br>
+              Wali Kelas <span id="view-recipient-class">[Kelas]</span><br>
+              <span id="view-school-name">[Nama Sekolah]</span><br>
+              di Tempat</p>
+            </div>
+
+            <div class="letter-body">
+              <p>Dengan hormat,</p>
+              <p id="view-intro-text">Saya yang bertanda tangan di bawah ini, selaku orang tua/wali dari siswa:</p>
+
+              <table class="letter-details">
+                <tr>
+                  <td class="col-label">Nama</td>
+                  <td class="col-colon">:</td>
+                  <td class="col-value"><strong id="view-student-name">[Nama Siswa]</strong></td>
+                </tr>
+                <tr>
+                  <td class="col-label">Kelas</td>
+                  <td class="col-colon">:</td>
+                  <td class="col-value" id="view-student-class">[Kelas]</td>
+                </tr>
+                <tr>
+                  <td class="col-label">Wali Kelas</td>
+                  <td class="col-colon">:</td>
+                  <td class="col-value" id="view-homeroom-teacher">[Nama Wali Kelas]</td>
+                </tr>
+              </table>
+
+              <p class="paragraph-spacing" id="view-main-reason-paragraph">
+                Memberitahukan bahwa anak saya tidak dapat mengikuti kegiatan pembelajaran pada hari/tanggal <strong id="view-permit-date">[Tanggal]</strong> dikarenakan <strong id="view-reason">[Alasan]</strong>.
+              </p>
+
+              <p class="paragraph-spacing">
+                Demikian surat izin ini saya sampaikan dengan sebenarnya. Atas perhatian dan pengertian Bapak/Ibu Guru, saya ucapkan terima kasih.
+              </p>
+            </div>
+
+            <div class="letter-footer">
+              <div class="signature-box">
+                <p><span id="view-city">[Kota]</span>, <span id="view-letter-date">[Tanggal Surat]</span></p>
+                <p>Hormat saya,</p>
+                <p class="signature-relation" id="view-signature-title">Orang Tua / Wali Siswa</p>
+                <div class="signature-space"></div>
+                <p class="signature-name">( <strong id="view-signer-name">[Nama Penandatangan]</strong> )</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Mobile Sticky Action Bar -->
+      <div class="mobile-sticky-actions">
+        <button id="btn-mobile-pdf" class="btn btn-primary btn-sm">PDF</button>
+        <button id="btn-mobile-png" class="btn btn-secondary btn-sm">PNG</button>
+        <button id="btn-mobile-share" class="btn btn-outline btn-sm">Bagikan</button>
+      </div>
+    </section>
+
+    <!-- 4. HALAMAN 404 - NOT FOUND -->
+    <section id="page-not-found" class="page-section">
+      <div class="container not-found-container">
+        <div class="card not-found-card">
+          <div class="error-icon-box">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          </div>
+          <h2>Surat Tidak Ditemukan</h2>
+          <p>Surat dengan alamat URL tersebut tidak tersedia, telah dihapus, atau tersimpan di perangkat/browser lain.</p>
+          <button id="btn-404-create" class="btn btn-primary btn-lg">Buat Surat Baru</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- About Modal -->
+  <div id="modal-about" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Tentang Surat Izin Sekolah</h3>
+        <button class="modal-close" id="btn-close-about">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Aplikasi ini mempermudah siswa dan orang tua/wali siswa dalam membuat surat izin tidak masuk sekolah secara rapi, formal, dan otomatis.</p>
+        <div class="privacy-info-box">
+          <strong>Keamanan & Privasi:</strong>
+          <p>Semua data yang Anda isi tersimpan secara lokal di browser Anda (LocalStorage). Tidak ada data pribadi atau dokumen Anda yang dikirim atau disimpan di server luar.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="btn-about-ok">Mengerti</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Share Fallback Modal -->
+  <div id="modal-share" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Bagikan Surat</h3>
+        <button class="modal-close" id="btn-close-share">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Pilih platform untuk membagikan tautan surat izin:</p>
+        <div class="share-options">
+          <button id="share-wa" class="btn btn-share btn-wa">
+            WhatsApp
+          </button>
+          <button id="share-tg" class="btn btn-share btn-tg">
+            Telegram
+          </button>
+          <button id="share-copy-modal" class="btn btn-share btn-outline">
+            Salin Link
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="spinner"></div>
+    <span id="loading-text">Memproses dokumen...</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
