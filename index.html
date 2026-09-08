@@ -508,6 +508,13 @@
     <div class="spinner"></div>
     <span id="loading-text">Memproses dokumen...</span>
   </div>
+  <!-- Load Supabase JS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = 'https://vktwhmvakglryxvlpyro.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_WDQVrOA7w5L_SZ3dsw7h3A_qu5j7a9E';
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+</script>
 
   <script src="script.js"></script>
 </body>
