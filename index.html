@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surat Izin Sekolah — Generator Surat Izin Modern</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Tinos:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- CDN Dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body class="light-theme">
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/" id="brand-logo" class="brand">
+        <span class="brand-icon">📝</span>
+        <span class="brand-text">SuratIzin<span class="brand-accent">.id</span></span>
+      </a>
+      <div class="nav-actions">
+        <button id="btn-nav-home" class="btn-flat">Beranda</button>
+        <button id="btn-nav-about" class="btn-flat">Tentang</button>
+        <button id="btn-theme-toggle" class="btn-icon" aria-label="Toggle Theme">🌙</button>
+        <button id="btn-nav-create" class="btn-primary-sm">+ Buat Surat</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    
+    <!-- PAGE 1: HOME -->
+    <section id="page-home" class="page-section active">
+      <div class="hero-container">
+        <span class="badge">Efisien & Cepat</span>
+        <h1 class="hero-title">Buat & Bagikan Surat Izin Sekolah Tanpa Ribet</h1>
+        <p class="hero-subtitle">Isi formulir, simpan secara otomatis ke cloud, lalu kirimkan tautan langsung ke wali kelas atau cetak dalam format PDF/Gambar resmi.</p>
+        <div class="hero-cta">
+          <button id="btn-hero-create" class="btn-primary-lg">Buat Surat Sekarang</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 2: FORM -->
+    <section id="page-form" class="page-section">
+      <div class="form-card">
+        <div class="form-header">
+          <h2>Formulir Surat Izin</h2>
+          <p>Lengkapi data di bawah ini untuk membuat dokumen surat izin resmi.</p>
+        </div>
+
+        <form id="letter-form" novalidate>
+          <div class="form-group">
+            <label class="form-label">Pembuat Surat</label>
+            <div class="radio-toggle-group">
+              <label class="radio-tile active" id="label-author-parent">
+                <input type="radio" name="authorType" value="orangtua" checked>
+                <span>Orang Tua / Wali</span>
+              </label>
+              <label class="radio-tile" id="label-author-student">
+                <input type="radio" name="authorType" value="siswa">
+                <span>Siswa Sendiri</span>
+              </label>
+            </div>
+          </div>
+
+          <div id="parent-info-group" class="form-row">
+            <div class="form-field">
+              <label for="parentName">Nama Orang Tua / Wali *</label>
+              <input type="text" id="parentName" placeholder="Contoh: Budi Hermawan">
+            </div>
+            <div class="form-field">
+              <label for="parentRelation">Hubungan</label>
+              <select id="parentRelation">
+                <option value="Ayah">Ayah</option>
+                <option value="Ibu">Ibu</option>
+                <option value="Wali">Wali</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="studentName">Nama Lengkap Siswa *</label>
+              <input type="text" id="studentName" placeholder="Contoh: Rizki Hermawan">
+            </div>
+            <div class="form-field">
+              <label for="studentClass">Kelas / Rombel *</label>
+              <input type="text" id="studentClass" placeholder="Contoh: XII MIPA 1">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="homeroomTeacher">Nama Wali Kelas *</label>
+              <input type="text" id="homeroomTeacher" placeholder="Contoh: Drs. Ahmad Dahlan, M.Pd">
+            </div>
+            <div class="form-field">
+              <label for="schoolName">Nama Sekolah *</label>
+              <input type="text" id="schoolName" placeholder="Contoh: SMAN 1 Jakarta">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="cityName">Kota / Kabupaten *</label>
+              <input type="text" id="cityName" placeholder="Contoh: Jakarta">
+            </div>
+            <div class="form-field">
+              <label for="letterDate">Tanggal Surat *</label>
+              <input type="date" id="letterDate">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="startDate">Mulai Izin *</label>
+              <input type="date" id="startDate">
+            </div>
+            <div class="form-field">
+              <label for="endDate">Sampai Tanggal *</label>
+              <input type="date" id="endDate">
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="reasonType">Alasan Izin *</label>
+            <select id="reasonType">
+              <option value="Sakit">Sakit</option>
+              <option value="Ada Keperluan Keluarga">Keperluan Keluarga</option>
+              <option value="Anak sedang tidak enak badan">Kurang Sehat / Istirahat</option>
+              <option value="Lainnya">Alasan Lainnya...</option>
+            </select>
+          </div>
+
+          <div id="custom-reason-container" class="form-field hidden">
+            <label for="customReason">Tulis Alasan Khusus *</label>
+            <textarea id="customReason" rows="2" placeholder="Tuliskan alasan izin secara singkat dan jelas..."></textarea>
+          </div>
+
+          <div class="form-field">
+            <label for="userSlug">Custom URL Link Surat *</label>
+            <div class="slug-input-wrapper">
+              <span class="slug-prefix">/</span>
+              <input type="text" id="userSlug" placeholder="rizki-hermawan">
+            </div>
+            <small class="help-text">Link unik Anda: <span id="slug-preview-text">/rizki-hermawan</span></small>
+          </div>
+
+          <button type="submit" class="btn-primary-block">Simpan & Generate Surat</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- PAGE 3: PREVIEW -->
+    <section id="page-preview" class="page-section">
+      <div class="preview-actions-bar">
+        <div class="left-actions">
+          <button id="btn-edit-letter" class="btn-outline">✏️ Edit Surat</button>
+          <button id="btn-share-link" class="btn-secondary">🔗 Bagikan Link</button>
+        </div>
+        <div class="right-actions">
+          <button id="btn-download-png" class="btn-outline">Download PNG</button>
+          <button id="btn-download-pdf" class="btn-primary-sm">Download PDF</button>
+        </div>
+      </div>
+
+      <div class="paper-wrapper">
+        <article id="letter-paper" class="a4-paper">
+          <div class="letter-header-date">
+            <span id="view-city">Jakarta</span>, <span id="view-letter-date">8 September 2026</span>
+          </div>
+
+          <div class="letter-recipient">
+            <p>Kepada Yth.</p>
+            <p>Bapak/Ibu Guru Wali Kelas <strong id="view-recipient-class">XII MIPA 1</strong></p>
+            <p><strong id="view-school-name">SMAN 1 Jakarta</strong></p>
+            <p>di Tempat</p>
+          </div>
+
+          <div class="letter-body">
+            <p>Dengan hormat,</p>
+            <p id="view-intro-text">Saya yang bertanda tangan di bawah ini, selaku orang tua/wali dari siswa:</p>
+
+            <table class="letter-details-table">
+              <tr>
+                <td class="col-label">Nama Siswa</td>
+                <td class="col-sep">:</td>
+                <td class="col-val"><strong id="view-student-name">-</strong></td>
+              </tr>
+              <tr>
+                <td class="col-label">Kelas</td>
+                <td class="col-sep">:</td>
+                <td class="col-val" id="view-student-class">-</td>
+              </tr>
+              <tr>
+                <td class="col-label">Wali Kelas</td>
+                <td class="col-sep">:</td>
+                <td class="col-val" id="view-homeroom-teacher">-</td>
+              </tr>
+            </table>
+
+            <p id="view-main-reason-paragraph">
+              Memberitahukan bahwa anak saya tersebut di atas tidak dapat mengikuti kegiatan pembelajaran pada hari/tanggal <strong id="view-permit-date">-</strong> dikarenakan <strong id="view-reason">-</strong>.
+            </p>
+
+            <p>Demikian surat izin ini saya sampaikan. Atas perhatian dan pengertian Bapak/Ibu Guru Wali Kelas, saya ucapkan terima kasih.</p>
+          </div>
+
+          <div class="letter-footer-signature">
+            <p>Hormat kami,</p>
+            <p id="view-signature-title">Orang Tua / Wali Siswa</p>
+            <div class="signature-space"></div>
+            <p><strong id="view-signer-name">-</strong></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PAGE 4: NOT FOUND -->
+    <section id="page-not-found" class="page-section">
+      <div class="error-container">
+        <h1>404</h1>
+        <h2>Surat Tidak Ditemukan</h2>
+        <p>Tautan surat ini tidak valid atau belum pernah dibuat di database system.</p>
+        <button id="btn-404-create" class="btn-primary-lg">Buat Surat Baru</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modals -->
+  <div id="modal-share" class="modal-overlay">
+    <div class="modal-card">
+      <h3>Bagikan Link Surat</h3>
+      <p>Kirimkan link ini langsung kepada wali kelas atau guru:</p>
+      <div class="share-input-group">
+        <input type="text" id="share-url-input" readonly>
+        <button id="btn-copy-link" class="btn-primary-sm">Salin</button>
+      </div>
+      <div class="share-buttons">
+        <button id="share-wa" class="btn-wa">WhatsApp</button>
+        <button id="share-tg" class="btn-tg">Telegram</button>
+      </div>
+      <button id="btn-close-share" class="btn-flat-block">Tutup</button>
+    </div>
+  </div>
+
+  <div id="modal-about" class="modal-overlay">
+    <div class="modal-card">
+      <h3>Tentang Platform</h3>
+      <p>Sistem Pembuat Surat Izin Sekolah Otomatis berbasis Cloud Storage & Dynamic Client Routing SPA.</p>
+      <button id="btn-about-ok" class="btn-primary-block">Tutup</button>
+    </div>
+  </div>
+
+  <!-- Global Toast & Loading Overlay -->
+  <div id="toast-container"></div>
+  <div id="loading-overlay">
+    <div class="spinner"></div>
+    <p id="loading-text">Memproses data...</p>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
