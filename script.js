@@ -7,8 +7,8 @@
 'use strict';
 
 // 1. Inisialisasi Supabase Client
-const SUPABASE_URL = 'https://YOUR_PROJECT_ID.supabase.co'; // Ganti dengan Supabase URL Anda
-const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';                 // Ganti dengan Supabase Anon Key Anda
+const SUPABASE_URL = 'https://vktwhmvakglryxvlpyro.supabase.co'; // Ganti dengan Supabase URL Anda
+const SUPABASE_ANON_KEY = 'sb_publishable_WDQVrOA7w5L_SZ3dsw7h3A_qu5j7a9E';                 // Ganti dengan Supabase Anon Key Anda
 let supabase = null;
 
 if (typeof window.supabase !== 'undefined' && !SUPABASE_URL.includes('YOUR_PROJECT_ID')) {
