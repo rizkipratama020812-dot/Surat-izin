@@ -7,8 +7,8 @@
 'use strict';
 
 // Config Supabase (Ganti dengan kredensial project Supabase Anda)
-const SUPABASE_URL = 'https://YOUR_PROJECT_ID.supabase.co';
-const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
+const SUPABASE_URL = 'https://vktwhmvakglryxvlpyro.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_WDQVrOA7w5L_SZ3dsw7h3A_qu5j7a9E';
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // Global Application State
